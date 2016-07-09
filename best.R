@@ -5,7 +5,7 @@ best <- function(state, outcome) {
   ##  state: 2 letter US state code or territory, including PR (Puerto Rico), GU (Guam)
 
   ## outcome is one of "heart attack", "heart failure", or "pneumonia"
-  ##    this is mapped to a particualr column in the data set
+  ##    this is mapped to a particular column in the data set
   
   if (outcome == "heart attack") {
     outcomeFocus <-'Hospital.30.Day.Death..Mortality..Rates.from.Heart.Attack'
@@ -47,6 +47,8 @@ best <- function(state, outcome) {
   
   ## there may be multiple hospitals with the same lowest value.
   ## return the first alphabetically, as per the assignment instructions
-  bestHospital <- sort(hospitalsWithMin['Hospital.Name'])[1]
-  bestHospital[1,'Hospital.Name']
+  bestHospitals <- sort(hospitalsWithMin[['Hospital.Name']])
+  bestHospitals[1]
+  #bestHospital <- sort(hospitalsWithMin['Hospital.Name'])[1]
+  #bestHospital[1,'Hospital.Name']
 }

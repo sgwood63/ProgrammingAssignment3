@@ -1,7 +1,8 @@
 
   ## Read outcome data
-  outcomeSet <- read.csv('outcome-of-care-measures.csv')
-  state <- 'NY'
+outcomeSet <- read.csv('outcome-of-care-measures.csv', 
+                       na.strings = c("Not Available"), stringsAsFactors = FALSE)
+state <- 'NV'
   outcome <- 'pneumonia'
   
   #outcome <- "heart attack"
@@ -47,6 +48,9 @@
   bestHospital <- sort(hospitalsWithMin['Hospital.Name'])[1]
   bestHospital[1,'Hospital.Name']
   
+  ## order data frame by multiple columns
+  dd[ order(-dd[,4], dd[,1]), ]
+  stateData[order(stateData[,outcomeFocus],stateData[,'Hospital.Name']), ] 
   
   # source("best.R")
    best("TX", "heart attack")
@@ -68,3 +72,7 @@
    > best("NY", "hert attack")
   Error in best("NY", "hert attack") : invalid outcome
   >
+    
+    
+    tail(rankall("heart failure"), 10)
+  
